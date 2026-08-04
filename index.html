@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dobry Dach — Mapa procesów MAŁE · v2.3</title>
+<title>Dobry Dach — Mapa procesów MAŁE · v2.4</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -79,8 +79,11 @@
   ol li{counter-increment:o;padding-left:30px}
   ol li::before{content:counter(o);position:absolute;left:0;top:1px;width:20px;height:20px;background:var(--violet-soft);color:var(--violet-d);border-radius:50%;font-family:var(--mono);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center}
 
-  /* SCHEMAT PROCESU — pionowy flow (v2.3, zero wewnętrznych scrolli) */
-  .vflow{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:14px;background:#fafbfd;padding:12px}
+  /* SCHEMAT PROCESU — 2 kolumny, wąż lewy→prawy→niżej (v2.4, zero wewnętrznych scrolli) */
+  .pairs{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:14px;background:#fafbfd;padding:12px}
+  .pair{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:stretch}
+  .h-arrow{display:flex;align-items:center;color:#c9ccd4;font-size:16px;font-weight:600}
+  .vdown{text-align:center;color:#c9ccd4;font-size:13px;line-height:1;padding:5px 0}
   .vnode{display:flex;align-items:center;gap:12px;text-decoration:none;background:#fff;border:1px solid var(--line);border-left:4px solid #d6d8de;border-radius:10px;padding:8px 14px;transition:.15s}
   .vnode:hover{border-color:var(--violet);box-shadow:0 2px 10px rgba(124,92,255,.12)}
   .vnode.r-red{border-left-color:var(--red)}
@@ -88,9 +91,15 @@
   .vnode.r-green{border-left-color:var(--green)}
   .v-nr{font-family:var(--mono);font-size:12px;color:var(--violet);font-weight:600;min-width:26px}
   .v-name{font-size:14px;font-weight:600;color:var(--ink);flex:1}
-  .v-chips{display:flex;gap:4px;flex-wrap:wrap}
-  .v-auto{font-family:var(--mono);font-size:9.5px;font-weight:600;color:var(--violet-d);background:var(--violet-soft);border:1px solid var(--violet-line);border-radius:5px;padding:1px 6px}
-  .v-arrow{text-align:center;color:#c9ccd4;font-size:12px;line-height:1;padding:3px 0}
+  .v-chips{display:flex;gap:4px;flex-wrap:wrap;justify-content:flex-end}
+  .v-auto{font-family:var(--mono);font-size:9.5px;font-weight:600;border-radius:5px;padding:2px 6px;white-space:nowrap}
+  .v-auto.a1{color:var(--blue-d);background:var(--blue-soft);border:1px solid var(--blue-line)}
+  .v-auto.a2{color:var(--green-d);background:var(--green-soft);border:1px solid var(--green-line)}
+  .v-auto.a3{color:var(--orange-d);background:var(--orange-soft);border:1px solid var(--orange-line)}
+  .v-auto.a4{color:var(--violet-d);background:var(--violet-soft);border:1px solid var(--violet-line)}
+  .v-auto.a5{color:var(--amber);background:var(--amber-soft);border:1px solid var(--amber-line)}
+  .v-auto.a6{color:#e8eaed;background:var(--dark);border:1px solid #3a4152}
+  @media(max-width:760px){.pair{grid-template-columns:1fr}.h-arrow{justify-content:center;transform:rotate(90deg);padding:4px 0}}
   .auto-legend{display:flex;flex-direction:column;gap:5px;margin-top:6px}
   .al{font-size:13px;color:var(--muted);display:flex;gap:9px;align-items:baseline}
   .al-k{font-family:var(--mono);font-size:11.5px;font-weight:700;color:var(--violet-d);background:var(--violet-soft);border-radius:6px;padding:1px 7px;white-space:nowrap}
@@ -209,7 +218,7 @@
   <h1>Mapa procesów — małe zlecenia (ZK)</h1>
   <p class="sub">Od zapytania klienta po FV finalną: <strong>18 węzłów × 14 pól</strong>. To, co wiemy (umowa 13937/25/01, DD.pptx, roboczy v3) siedzi na stałe ze źródłem. <strong>Wszystko czego nie wiemy — to otwarte pola.</strong></p>
   <div class="meta-row">
-    <span class="chip">v2.3 · 2026-08-04</span>
+    <span class="chip">v2.4 · 2026-08-04</span>
     <span class="chip">styl: AniaKruk oferta</span>
     <span class="chip">18 węzłów · 170 pól</span>
     <span class="chip">baza: <b>DD.pptx</b> + <b>umowa</b> + <b>roboczy v3</b></span>
@@ -227,8 +236,8 @@
 
   <section id="s1">
     <h2><span class="n">01</span>Schemat procesu — punkt wyjścia</h2>
-    <p class="sec-sub">Cały proces mały w jednym widoku, bez scrollowania — automatyzacje przypięte do węzłów. Kliknij węzeł, żeby przejść do szczegółów.</p>
-    <div class="vflow"><a class="vnode r-amber" href="#wezel-00"><span class="v-nr">00</span><span class="v-name">Kontakt klienta</span><span class="v-chips"></span></a><div class="v-arrow">↓</div><a class="vnode r-amber" href="#wezel-01"><span class="v-nr">01</span><span class="v-name">Przyjęcie projektu</span><span class="v-chips"><span class="v-auto">#1</span></span></a><div class="v-arrow">↓</div><a class="vnode r-amber" href="#wezel-02"><span class="v-nr">02</span><span class="v-name">Wycena + marża</span><span class="v-chips"><span class="v-auto">#1</span></span></a><div class="v-arrow">↓</div><a class="vnode r-amber" href="#wezel-03"><span class="v-nr">03</span><span class="v-name">Oferta (ZK)</span><span class="v-chips"><span class="v-auto">#1</span></span></a><div class="v-arrow">↓</div><a class="vnode r-red" href="#wezel-04"><span class="v-nr">04</span><span class="v-name">Negocjacje</span><span class="v-chips"><span class="v-auto">#2</span></span></a><div class="v-arrow">↓</div><a class="vnode r-red" href="#wezel-05"><span class="v-nr">05</span><span class="v-name">Akceptacja</span><span class="v-chips"><span class="v-auto">#2</span></span></a><div class="v-arrow">↓</div><a class="vnode r-amber" href="#wezel-06"><span class="v-nr">06</span><span class="v-name">Umowa</span><span class="v-chips"><span class="v-auto">#2</span></span></a><div class="v-arrow">↓</div><a class="vnode r-red" href="#wezel-07"><span class="v-nr">07</span><span class="v-name">Status → realizacja</span><span class="v-chips"><span class="v-auto">#2</span></span></a><div class="v-arrow">↓</div><a class="vnode r-amber" href="#wezel-08"><span class="v-nr">08</span><span class="v-name">Kalendarze</span><span class="v-chips"><span class="v-auto">#2</span></span></a><div class="v-arrow">↓</div><a class="vnode r-red" href="#wezel-09"><span class="v-nr">09</span><span class="v-name">Zamówienie materiałów</span><span class="v-chips"><span class="v-auto">#2</span></span></a><div class="v-arrow">↓</div><a class="vnode r-red" href="#wezel-10"><span class="v-nr">10</span><span class="v-name">WZ</span><span class="v-chips"><span class="v-auto">#3</span></span></a><div class="v-arrow">↓</div><a class="vnode r-amber" href="#wezel-11"><span class="v-nr">11</span><span class="v-name">Info do PH</span><span class="v-chips"><span class="v-auto">#3</span></span></a><div class="v-arrow">↓</div><a class="vnode r-amber" href="#wezel-12"><span class="v-nr">12</span><span class="v-name">FV zaliczkowe</span><span class="v-chips"><span class="v-auto">#3</span></span></a><div class="v-arrow">↓</div><a class="vnode r-amber" href="#wezel-13"><span class="v-nr">13</span><span class="v-name">Summary PH</span><span class="v-chips"><span class="v-auto">#4</span></span></a><div class="v-arrow">↓</div><a class="vnode r-amber" href="#wezel-14"><span class="v-nr">14</span><span class="v-name">Zmiany zakresu</span><span class="v-chips"><span class="v-auto">#3</span><span class="v-auto">#5</span></span></a><div class="v-arrow">↓</div><a class="vnode r-red" href="#wezel-15"><span class="v-nr">15</span><span class="v-name">Finalizacja</span><span class="v-chips"><span class="v-auto">#5</span></span></a><div class="v-arrow">↓</div><a class="vnode r-amber" href="#wezel-16"><span class="v-nr">16</span><span class="v-name">FV finalna</span><span class="v-chips"><span class="v-auto">#5</span></span></a><div class="v-arrow">↓</div><a class="vnode r-amber" href="#wezel-17"><span class="v-nr">17</span><span class="v-name">Zamknięcie</span><span class="v-chips"><span class="v-auto">#6</span></span></a></div>
+    <p class="sec-sub">Dwie kolumny, czytanie wężem: lewy → prawy → niżej → lewy… Planowane automatyzacje zaznaczone przy węzłach (⚙ numer · nazwa). Kliknij węzeł, żeby przejść do szczegółów.</p>
+    <div class="pairs"><div class="pair"><a class="vnode r-amber" href="#wezel-00"><span class="v-nr">00</span><span class="v-name">Kontakt klienta</span><span class="v-chips"></span></a><span class="h-arrow">→</span><a class="vnode r-amber" href="#wezel-01"><span class="v-nr">01</span><span class="v-name">Przyjęcie projektu</span><span class="v-chips"><span class="v-auto a1">⚙ 1 · oferta ZK</span></span></a></div><div class="vdown">↓</div><div class="pair"><a class="vnode r-amber" href="#wezel-02"><span class="v-nr">02</span><span class="v-name">Wycena + marża</span><span class="v-chips"><span class="v-auto a1">⚙ 1 · oferta ZK</span></span></a><span class="h-arrow">→</span><a class="vnode r-amber" href="#wezel-03"><span class="v-nr">03</span><span class="v-name">Oferta (ZK)</span><span class="v-chips"><span class="v-auto a1">⚙ 1 · oferta ZK</span></span></a></div><div class="vdown">↓</div><div class="pair"><a class="vnode r-red" href="#wezel-04"><span class="v-nr">04</span><span class="v-name">Negocjacje</span><span class="v-chips"><span class="v-auto a2">⚙ 2 · umowa + kal.</span></span></a><span class="h-arrow">→</span><a class="vnode r-red" href="#wezel-05"><span class="v-nr">05</span><span class="v-name">Akceptacja</span><span class="v-chips"><span class="v-auto a2">⚙ 2 · umowa + kal.</span></span></a></div><div class="vdown">↓</div><div class="pair"><a class="vnode r-amber" href="#wezel-06"><span class="v-nr">06</span><span class="v-name">Umowa</span><span class="v-chips"><span class="v-auto a2">⚙ 2 · umowa + kal.</span></span></a><span class="h-arrow">→</span><a class="vnode r-red" href="#wezel-07"><span class="v-nr">07</span><span class="v-name">Status → realizacja</span><span class="v-chips"><span class="v-auto a2">⚙ 2 · umowa + kal.</span></span></a></div><div class="vdown">↓</div><div class="pair"><a class="vnode r-amber" href="#wezel-08"><span class="v-nr">08</span><span class="v-name">Kalendarze</span><span class="v-chips"><span class="v-auto a2">⚙ 2 · umowa + kal.</span></span></a><span class="h-arrow">→</span><a class="vnode r-red" href="#wezel-09"><span class="v-nr">09</span><span class="v-name">Zamówienie materiałów</span><span class="v-chips"><span class="v-auto a2">⚙ 2 · umowa + kal.</span></span></a></div><div class="vdown">↓</div><div class="pair"><a class="vnode r-red" href="#wezel-10"><span class="v-nr">10</span><span class="v-name">WZ</span><span class="v-chips"><span class="v-auto a3">⚙ 3 · WZ / PH</span></span></a><span class="h-arrow">→</span><a class="vnode r-amber" href="#wezel-11"><span class="v-nr">11</span><span class="v-name">Info do PH</span><span class="v-chips"><span class="v-auto a3">⚙ 3 · WZ / PH</span></span></a></div><div class="vdown">↓</div><div class="pair"><a class="vnode r-amber" href="#wezel-12"><span class="v-nr">12</span><span class="v-name">FV zaliczkowe</span><span class="v-chips"><span class="v-auto a3">⚙ 3 · WZ / PH</span></span></a><span class="h-arrow">→</span><a class="vnode r-amber" href="#wezel-13"><span class="v-nr">13</span><span class="v-name">Summary PH</span><span class="v-chips"><span class="v-auto a4">⚙ 4 · dz. summary</span></span></a></div><div class="vdown">↓</div><div class="pair"><a class="vnode r-amber" href="#wezel-14"><span class="v-nr">14</span><span class="v-name">Zmiany zakresu</span><span class="v-chips"><span class="v-auto a3">⚙ 3 · WZ / PH</span><span class="v-auto a5">⚙ 5 · finalizacja</span></span></a><span class="h-arrow">→</span><a class="vnode r-red" href="#wezel-15"><span class="v-nr">15</span><span class="v-name">Finalizacja</span><span class="v-chips"><span class="v-auto a5">⚙ 5 · finalizacja</span></span></a></div><div class="vdown">↓</div><div class="pair"><a class="vnode r-amber" href="#wezel-16"><span class="v-nr">16</span><span class="v-name">FV finalna</span><span class="v-chips"><span class="v-auto a5">⚙ 5 · finalizacja</span></span></a><span class="h-arrow">→</span><a class="vnode r-amber" href="#wezel-17"><span class="v-nr">17</span><span class="v-name">Zamknięcie</span><span class="v-chips"><span class="v-auto a6">⚙ 6 · duże (GW)</span></span></a></div></div>
     <div class="auto-legend"><span class="al"><span class="al-k">#1</span>Auto #1 · oferta ZK + AI scan projektu (węzły 01–03)</span><span class="al"><span class="al-k">#2</span>Auto #2 · umowa, weryfikator AI, kalendarze, status ZK, zamówienie (04–09)</span><span class="al"><span class="al-k">#3</span>Auto #3 · monitoring WZ, powiadomienia PH, FV zaliczkowe (10–12, 14)</span><span class="al"><span class="al-k">#4</span>Auto #4 · dzienne summary PH (13)</span><span class="al"><span class="al-k">#5</span>Auto #5 · finalizacja ZK vs WZ, FV finalna (14–16)</span><span class="al"><span class="al-k">#6</span>Auto #6 · duże kontrakty GW — kolejna faza (17)</span></div>
   </section>
 
@@ -650,7 +659,7 @@
 
 <div class="foot">
   Źródła: <b>pptx</b> — DD.pptx (26.07.2026) · <b>umowa</b> — 13937/25/01 NDI S.A. ↔ Dobry Dach (00_umowa.pdf) · <b>roboczy</b> — dobry-dach-roboczy.html v3 · <b>brief</b> — Brief-dla-klienta.md · <b>założenie</b> — hipoteza do weryfikacji
-  <br>Dobry Dach · mapa procesów MAŁE · v2.3 · 2026-08-04 · generator: build_mapa_procesow.py · live: tomekwlqq.github.io/dobry-dach
+  <br>Dobry Dach · mapa procesów MAŁE · v2.4 · 2026-08-04 · generator: build_mapa_procesow.py · live: tomekwlqq.github.io/dobry-dach
 </div>
 
 <script>
@@ -767,7 +776,7 @@
   });
 
   window.exportJSON = function(){
-    var data = {meta:{dokument:"Dobry Dach — mapa procesów MAŁE", wersja:"2.3", data:"2026-08-04", url:"https://tomekwlqq.github.io/dobry-dach/"}, pola:{}};
+    var data = {meta:{dokument:"Dobry Dach — mapa procesów MAŁE", wersja:"2.4", data:"2026-08-04", url:"https://tomekwlqq.github.io/dobry-dach/"}, pola:{}};
     els.forEach(function(el){
       if(el.matches("[data-multi]")){
         data.pola[el.id] = {wartosc: groupVals(el), inne: groupInne(el), stan: stateOf(el)};
