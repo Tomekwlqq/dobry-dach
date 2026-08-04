@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dobry Dach — Mapa procesów MAŁE · v2.8</title>
+<title>Dobry Dach — Mapa procesów MAŁE · v2.9</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -207,6 +207,12 @@
   .box.green h3{color:var(--green-d)}
   .box.amber{background:var(--amber-soft);border-color:var(--amber-line)}
   .box.amber h3{color:var(--amber)}
+  .ask-box{margin:18px 0 4px}
+  .ask-list{list-style:none;counter-reset:ask;margin:0 0 12px}
+  .ask-list li{counter-increment:ask;padding-left:34px;margin-bottom:10px;position:relative}
+  .ask-list li::before{content:counter(ask);position:absolute;left:0;top:1px;width:22px;height:22px;background:#fff;color:var(--green-d);border:1px solid var(--green-line);border-radius:50%;font-family:var(--mono);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center}
+  .ask-list li::after{content:'';position:static}
+  .ask-list li strong{color:var(--ink)}
 
   .filters{display:flex;gap:8px;margin-bottom:18px;flex-wrap:wrap}
   .fbtn{font-family:var(--mono);font-size:12px;border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 14px;cursor:pointer;color:var(--muted);transition:.15s}
@@ -237,7 +243,7 @@
   <h1>Mapa procesów — małe zlecenia (ZK)</h1>
   <p class="sub">Od zapytania klienta po FV finalną: <strong>18 węzłów × 10 pól</strong> (v2.8: wycięte zbędne — metryki, warianty, SLA i painy per węzeł to był przerost formy). To, co wiemy (umowa 13937/25/01, DD.pptx, roboczy v3) siedzi na stałe ze źródłem. <strong>Reszta — otwarte pola.</strong></p>
   <div class="meta-row">
-    <span class="chip">v2.8 · 2026-08-04</span>
+    <span class="chip">v2.9 · 2026-08-04</span>
     <span class="chip">styl: AniaKruk oferta</span>
     <span class="chip">18 węzłów · 103 pola</span>
     <span class="chip">baza: <b>DD.pptx</b> + <b>umowa</b> + <b>roboczy v3</b></span>
@@ -251,6 +257,19 @@
     Pola z zamkniętą listą (aktorzy, urządzenia, kanały, soft) wybierasz <b>chipami</b> — klikaj, zaznaczaj, „Inne…” na brakującą opcję.
     Pola otwarte uzupełniasz tekstem. Każde pole ma <span class="st-hint">✓ Zapisane / ✏️ Do zmiany / ⏭ Pominięte</span> — wpis zapisuje się sam (ta przeglądarka).
     Po sesji: <b>Pobierz wypełnienia</b> → JSON odeślij mailem / wklej w czacie.
+  </div>
+
+  <div class="box green ask-box">
+    <h3>Co od Was potrzebujemy (minimum)</h3>
+    <p style="margin-bottom:10px">Tylko to, bez czego nie ruszymy. Resztę mapy (103 pola) wypełniamy RAZEM na warsztacie — nie wysyłamy Wam formularza.</p>
+    <ol class="ask-list">
+      <li><strong>System magazynowy</strong> — nazwa + czy da się wyciągnąć dane (API lub eksport CSV). Fundament wszystkiego: ZK, WZ, cennik.</li>
+      <li><strong>Plik Tomasza</strong> — Excel z algorytmem marży (per item). Bez niego nie przepiszemy logiki wyceny.</li>
+      <li><strong>Wzór oferty</strong> — „jaka postać?”: Excel / Word / PDF / wydruk. Automatyzacja ma generować ten sam format.</li>
+      <li><strong>Przykładowe dokumenty</strong> — 2–3 ZK + WZ + umowa. Prawdziwe formaty zamiast pytań o formaty.</li>
+      <li><strong>30–45 minut rozmowy</strong> o obiegu — kto, co, komu przekazuje. Reszta doprecyzuje się sama.</li>
+    </ol>
+    <p style="margin:0;font-size:13.5px;color:var(--green-d)">⚠ Uwaga: propozycja #1 (oferta ZK + AI scan) do dyskusji — macie coś działającego, nie wiadomo, czy warto.</p>
   </div>
 
   <section id="s1">
@@ -680,7 +699,7 @@
 
 <div class="foot">
   Źródła: <b>pptx</b> — DD.pptx (26.07.2026) · <b>umowa</b> — 13937/25/01 NDI S.A. ↔ Dobry Dach (00_umowa.pdf) · <b>roboczy</b> — dobry-dach-roboczy.html v3 · <b>brief</b> — Brief-dla-klienta.md · <b>założenie</b> — hipoteza do weryfikacji
-  <br>Dobry Dach · mapa procesów MAŁE · v2.8 · 2026-08-04 · generator: build_mapa_procesow.py · live: tomekwlqq.github.io/dobry-dach
+  <br>Dobry Dach · mapa procesów MAŁE · v2.9 · 2026-08-04 · generator: build_mapa_procesow.py · live: tomekwlqq.github.io/dobry-dach
 </div>
 
 <script>
@@ -797,7 +816,7 @@
   });
 
   window.exportJSON = function(){
-    var data = {meta:{dokument:"Dobry Dach — mapa procesów MAŁE", wersja:"2.8", data:"2026-08-04", url:"https://tomekwlqq.github.io/dobry-dach/"}, pola:{}};
+    var data = {meta:{dokument:"Dobry Dach — mapa procesów MAŁE", wersja:"2.9", data:"2026-08-04", url:"https://tomekwlqq.github.io/dobry-dach/"}, pola:{}};
     els.forEach(function(el){
       if(el.matches("[data-multi]")){
         data.pola[el.id] = {wartosc: groupVals(el), inne: groupInne(el), stan: stateOf(el)};
