@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dobry Dach — Mapa procesów MAŁE · v2.10</title>
+<title>Dobry Dach — Mapa procesów MAŁE · v2.11</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -208,11 +208,20 @@
   .box.amber{background:var(--amber-soft);border-color:var(--amber-line)}
   .box.amber h3{color:var(--amber)}
   .ask-box{margin:18px 0 4px}
-  .ask-list{list-style:none;margin:0 0 12px;column-count:2;column-gap:26px}
-  .ask-item{counter-increment:none;break-inside:avoid;padding-left:0;margin-bottom:9px;position:relative;font-size:14.5px;color:var(--muted)}
+  .ask-grp{margin-bottom:16px}
+  .ask-grp:last-child{margin-bottom:12px}
+  .ask-h{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:700;color:var(--ink);margin-bottom:8px}
+  .ask-badge{font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:.06em;border-radius:6px;padding:3px 10px;white-space:nowrap}
+  .ask-badge.must{color:#fff;background:var(--red)}
+  .ask-badge.should{color:#fff;background:var(--amber)}
+  .ask-badge.could{color:var(--muted);background:#e5e7eb;border:1px solid var(--line)}
+  .ask-list{list-style:none;margin:0;column-count:2;column-gap:26px}
+  .ask-item{break-inside:avoid;padding-left:0;margin-bottom:9px;position:relative;font-size:14.5px;color:var(--muted)}
   .ask-item::before{content:'';position:static;display:none}
-  .ask-nr{font-family:var(--mono);font-size:11.5px;font-weight:700;color:var(--green-d);background:#fff;border:1px solid var(--green-line);border-radius:6px;padding:1px 7px;margin-right:7px;white-space:nowrap}
-  .ask-blok{font-family:var(--mono);font-size:10.5px;font-weight:700;color:var(--red);background:var(--red-soft);border:1px solid var(--red-line);border-radius:6px;padding:1px 7px;white-space:nowrap;margin-left:5px}
+  .ask-nr{font-family:var(--mono);font-size:11.5px;font-weight:700;border-radius:6px;padding:1px 7px;margin-right:7px;white-space:nowrap}
+  .ask-nr.must{color:var(--red);background:var(--red-soft);border:1px solid var(--red-line)}
+  .ask-nr.should{color:var(--amber);background:var(--amber-soft);border:1px solid var(--amber-line)}
+  .ask-nr.could{color:var(--faint);background:#f3f4f6;border:1px solid var(--line)}
   .ask-item strong{color:var(--ink)}
   @media(max-width:760px){.ask-list{column-count:1}}
 
@@ -242,10 +251,10 @@
 <div class="wrap">
 
   <div class="kicker">Dobry Dach Sp. z o.o. · procesy MAŁE · mapa węzłowa</div>
-  <h1>Mapa procesów — małe zlecenia (ZK)</h1>
-  <p class="sub">Od zapytania klienta po FV finalną: <strong>18 węzłów × 10 pól</strong> (v2.8: wycięte zbędne — metryki, warianty, SLA i painy per węzeł to był przerost formy). To, co wiemy (umowa 13937/25/01, DD.pptx, roboczy v3) siedzi na stałe ze źródłem. <strong>Reszta — otwarte pola.</strong></p>
+  <h1>Mapa procesów — małe automatyzacje</h1>
+  <p class="sub">Od zapytania klienta po FV finalną: <strong>18 węzłów × 10 pól</strong>. To, co wiemy (umowa 13937/25/01, DD.pptx, roboczy v3) siedzi na stałe ze źródłem. <strong>Reszta — otwarte pola.</strong></p>
   <div class="meta-row">
-    <span class="chip">v2.10 · 2026-08-04</span>
+    <span class="chip">v2.11 · 2026-08-04</span>
     <span class="chip">styl: AniaKruk oferta</span>
     <span class="chip">18 węzłów · 103 pola</span>
     <span class="chip">baza: <b>DD.pptx</b> + <b>umowa</b> + <b>roboczy v3</b></span>
@@ -262,11 +271,9 @@
   </div>
 
   <div class="box green ask-box">
-    <h3>Co od Was potrzebujemy (minimum)</h3>
-    <p style="margin-bottom:10px">Po jednym konkretnym pytaniu / artefakcie na każdy węzeł procesu — 18 pozycji. <b>⛔ = bez tego nie ruszymy</b>. Resztę mapy (103 pola) wypełniamy RAZEM na warsztacie — nie wysyłamy Wam formularza.</p>
-    <ol class="ask-list">
-      <li class="ask-item"><span class="ask-nr">00</span><strong>Kontakt klienta</strong> — Kanał zgłoszeń — telefon / mail / WhatsApp? Kto odbiera? </li><li class="ask-item"><span class="ask-nr">01</span><strong>Przyjęcie projektu</strong> — Format skanu projektu — PDF techniczny / zdjęcie / DWG / papier? </li><li class="ask-item"><span class="ask-nr">02</span><strong>Wycena + marża</strong> — PLIK TOMASZA — Excel z algorytmem marży per item. <span class="ask-blok">⛔ blokada</span></li><li class="ask-item"><span class="ask-nr">03</span><strong>Oferta (ZK)</strong> — Wzór oferty — „jaka postać?”: Excel / Word / PDF / wydruk. </li><li class="ask-item"><span class="ask-nr">04</span><strong>Negocjacje</strong> — Jak klient zgłasza korekty — mail / telefon / spotkanie? </li><li class="ask-item"><span class="ask-nr">05</span><strong>Akceptacja</strong> — Jak klient potwierdza ofertę — mail „OK” / podpis / słownie? </li><li class="ask-item"><span class="ask-nr">06</span><strong>Umowa</strong> — Aktualny szablon umowy (Word) — ile wariantów? </li><li class="ask-item"><span class="ask-nr">07</span><strong>Status → realizacja</strong> — Kto zmienia status ZK i co go odpala? </li><li class="ask-item"><span class="ask-nr">08</span><strong>Kalendarze</strong> — Struktura kalendarzy — per PH / ekipa / projekt? Kto wpisuje? </li><li class="ask-item"><span class="ask-nr">09</span><strong>Zamówienie materiałów</strong> — SYSTEM MAGAZYNOWY — jaki? Czy ma API lub eksport CSV? <span class="ask-blok">⛔ blokada</span></li><li class="ask-item"><span class="ask-nr">10</span><strong>WZ</strong> — Czy WZ łączy się z ZK automatycznie? Kto wystawia? </li><li class="ask-item"><span class="ask-nr">11</span><strong>Info do PH</strong> — Kanał, który PH faktycznie przeczyta — mail / SMS / WhatsApp? </li><li class="ask-item"><span class="ask-nr">12</span><strong>FV zaliczkowe</strong> — System fakturowania — ten sam co ZK/WZ czy osobny? </li><li class="ask-item"><span class="ask-nr">13</span><strong>Summary PH</strong> — Kto ma dostawać raport i o której — odbiorcy + kanał? </li><li class="ask-item"><span class="ask-nr">14</span><strong>Zmiany zakresu</strong> — Wzór aneksu / rejestru zmian — jak dziś wygląda? </li><li class="ask-item"><span class="ask-nr">15</span><strong>Finalizacja</strong> — Skąd biorą się różnice ZK vs WZ i kto je akceptuje? </li><li class="ask-item"><span class="ask-nr">16</span><strong>FV finalna</strong> — Przykładowa FV końcowa + ten sam system FV? </li><li class="ask-item"><span class="ask-nr">17</span><strong>Zamknięcie</strong> — Gdzie trzymacie dokumentację powykonawczą — segregator / dysk / EDB? </li>
-    </ol>
+    <h3>Co od Was potrzebujemy — 3 poziomy</h3>
+    <p style="margin-bottom:12px">18 konkretnych pytań / artefaktów, po jednym na węzeł, w trzech poziomach priorytetu (kolor = poziom). Resztę mapy (103 pola) wypełniamy RAZEM na warsztacie — nie wysyłamy Wam formularza.</p>
+    <div class="ask-grp must"><div class="ask-h"><span class="ask-badge must">MUST HAVE</span>bez tego nie ruszymy</div><ol class="ask-list"><li class="ask-item"><span class="ask-nr must">02</span><strong>Wycena + marża</strong> — PLIK TOMASZA — Excel z algorytmem marży per item.</li><li class="ask-item"><span class="ask-nr must">09</span><strong>Zamówienie materiałów</strong> — SYSTEM MAGAZYNOWY — jaki? Czy ma API lub eksport CSV?</li><li class="ask-item"><span class="ask-nr must">03</span><strong>Oferta (ZK)</strong> — Wzór oferty — „jaka postać?”: Excel / Word / PDF / wydruk.</li><li class="ask-item"><span class="ask-nr must">01</span><strong>Przyjęcie projektu</strong> — Format skanu projektu — PDF techniczny / zdjęcie / DWG / papier?</li><li class="ask-item"><span class="ask-nr must">11</span><strong>Info do PH</strong> — Kanał, który PH faktycznie przeczyta — mail / SMS / WhatsApp?</li><li class="ask-item"><span class="ask-nr must">15</span><strong>Finalizacja</strong> — Skąd biorą się różnice ZK vs WZ i kto je akceptuje?</li></ol></div><div class="ask-grp should"><div class="ask-h"><span class="ask-badge should">SHOULD HAVE</span>potrzebne do projektu</div><ol class="ask-list"><li class="ask-item"><span class="ask-nr should">00</span><strong>Kontakt klienta</strong> — Kanał zgłoszeń — telefon / mail / WhatsApp? Kto odbiera?</li><li class="ask-item"><span class="ask-nr should">06</span><strong>Umowa</strong> — Aktualny szablon umowy (Word) — ile wariantów?</li><li class="ask-item"><span class="ask-nr should">08</span><strong>Kalendarze</strong> — Struktura kalendarzy — per PH / ekipa / projekt? Kto wpisuje?</li><li class="ask-item"><span class="ask-nr should">10</span><strong>WZ</strong> — Czy WZ łączy się z ZK automatycznie? Kto wystawia?</li><li class="ask-item"><span class="ask-nr should">12</span><strong>FV zaliczkowe</strong> — System fakturowania — ten sam co ZK/WZ czy osobny?</li><li class="ask-item"><span class="ask-nr should">13</span><strong>Summary PH</strong> — Kto ma dostawać raport i o której — odbiorcy + kanał?</li></ol></div><div class="ask-grp could"><div class="ask-h"><span class="ask-badge could">COULD HAVE</span>opcjonalne — dopinamy później</div><ol class="ask-list"><li class="ask-item"><span class="ask-nr could">04</span><strong>Negocjacje</strong> — Jak klient zgłasza korekty — mail / telefon / spotkanie?</li><li class="ask-item"><span class="ask-nr could">05</span><strong>Akceptacja</strong> — Jak klient potwierdza ofertę — mail „OK” / podpis / słownie?</li><li class="ask-item"><span class="ask-nr could">07</span><strong>Status → realizacja</strong> — Kto zmienia status ZK i co go odpala?</li><li class="ask-item"><span class="ask-nr could">14</span><strong>Zmiany zakresu</strong> — Wzór aneksu / rejestru zmian — jak dziś wygląda?</li><li class="ask-item"><span class="ask-nr could">16</span><strong>FV finalna</strong> — Przykładowa FV końcowa + ten sam system FV?</li><li class="ask-item"><span class="ask-nr could">17</span><strong>Zamknięcie</strong> — Gdzie trzymacie dokumentację powykonawczą — segregator / dysk / EDB?</li></ol></div>
     <p style="margin:0;font-size:13.5px;color:var(--green-d)">⚠ Uwaga: propozycja #1 (oferta ZK + AI scan) do dyskusji — macie coś działającego, nie wiadomo, czy warto.</p>
   </div>
 
@@ -697,7 +704,7 @@
 
 <div class="foot">
   Źródła: <b>pptx</b> — DD.pptx (26.07.2026) · <b>umowa</b> — 13937/25/01 NDI S.A. ↔ Dobry Dach (00_umowa.pdf) · <b>roboczy</b> — dobry-dach-roboczy.html v3 · <b>brief</b> — Brief-dla-klienta.md · <b>założenie</b> — hipoteza do weryfikacji
-  <br>Dobry Dach · mapa procesów MAŁE · v2.10 · 2026-08-04 · generator: build_mapa_procesow.py · live: tomekwlqq.github.io/dobry-dach
+  <br>Dobry Dach · mapa procesów MAŁE · v2.11 · 2026-08-04 · generator: build_mapa_procesow.py · live: tomekwlqq.github.io/dobry-dach
 </div>
 
 <script>
@@ -814,7 +821,7 @@
   });
 
   window.exportJSON = function(){
-    var data = {meta:{dokument:"Dobry Dach — mapa procesów MAŁE", wersja:"2.10", data:"2026-08-04", url:"https://tomekwlqq.github.io/dobry-dach/"}, pola:{}};
+    var data = {meta:{dokument:"Dobry Dach — mapa procesów MAŁE", wersja:"2.11", data:"2026-08-04", url:"https://tomekwlqq.github.io/dobry-dach/"}, pola:{}};
     els.forEach(function(el){
       if(el.matches("[data-multi]")){
         data.pola[el.id] = {wartosc: groupVals(el), inne: groupInne(el), stan: stateOf(el)};
