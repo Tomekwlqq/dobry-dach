@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dobry Dach — Mapa procesów MAŁE · v2.12</title>
+<title>Dobry Dach — Mapa procesów MAŁE · v2.13</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -267,7 +267,7 @@
   <h1>Mapa procesów — małe automatyzacje</h1>
   <p class="sub">Od zapytania klienta po FV finalną: <strong>18 węzłów × 10 pól</strong>. To, co wiemy (umowa 13937/25/01, DD.pptx, roboczy v3) siedzi na stałe ze źródłem. <strong>Reszta — otwarte pola.</strong></p>
   <div class="meta-row">
-    <span class="chip">v2.12 · 2026-08-04</span>
+    <span class="chip">v2.13 · 2026-08-04</span>
     <span class="chip">styl: AniaKruk oferta</span>
     <span class="chip">18 węzłów · 103 pola</span>
     <span class="chip">baza: <b>DD.pptx</b> + <b>umowa</b> + <b>roboczy v3</b></span>
@@ -717,7 +717,7 @@
 
 <div class="foot">
   Źródła: <b>pptx</b> — DD.pptx (26.07.2026) · <b>umowa</b> — 13937/25/01 NDI S.A. ↔ Dobry Dach (00_umowa.pdf) · <b>roboczy</b> — dobry-dach-roboczy.html v3 · <b>brief</b> — Brief-dla-klienta.md · <b>założenie</b> — hipoteza do weryfikacji
-  <br>Dobry Dach · mapa procesów MAŁE · v2.12 · 2026-08-04 · generator: build_mapa_procesow.py · live: tomekwlqq.github.io/dobry-dach
+  <br>Dobry Dach · mapa procesów MAŁE · v2.13 · 2026-08-04 · generator: build_mapa_procesow.py · live: tomekwlqq.github.io/dobry-dach
 </div>
 
 <script>
@@ -807,6 +807,14 @@
     clearTimeout(t);
     t = setTimeout(function(){ persist(); updateCounter(); }, 250);
   }
+  // v2.12 — flush przy zamknięciu/przełączeniu karty: ostatni wpis nie ginie
+  function flush(){
+    if(t){ clearTimeout(t); t = null; persist(); updateCounter(); }
+  }
+  window.addEventListener("pagehide", flush);
+  document.addEventListener("visibilitychange", function(){
+    if(document.visibilityState === "hidden") flush();
+  });
   els.forEach(function(el){
     if(el.matches("[data-multi]")){
       el.querySelectorAll(".mchip").forEach(function(chip){
@@ -834,7 +842,7 @@
   });
 
   window.exportJSON = function(){
-    var data = {meta:{dokument:"Dobry Dach — mapa procesów MAŁE", wersja:"2.12", data:"2026-08-04", url:"https://tomekwlqq.github.io/dobry-dach/"}, pola:{}};
+    var data = {meta:{dokument:"Dobry Dach — mapa procesów MAŁE", wersja:"2.13", data:"2026-08-04", url:"https://tomekwlqq.github.io/dobry-dach/"}, pola:{}};
     els.forEach(function(el){
       if(el.matches("[data-multi]")){
         data.pola[el.id] = {wartosc: groupVals(el), inne: groupInne(el), stan: stateOf(el)};
