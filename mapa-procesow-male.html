@@ -945,7 +945,9 @@
       Szacunkowo <input class="pct" type="number" min="0" max="100" placeholder="%"> <span class="pct-suffix">% terminów zmienianych w ostatniej chwili</span></p>
       <div class="auto-note"><b>[automat A4]</b> terminy z akceptacji (05) → event w kalendarzu → notyfikacja ekipy. Warunek: wspólny kalendarz cyfrowy.</div>
     </div>
-  </details>
+  
+<div class="auto-note"><b>✅ FAKT Z BAZY (2026-08-08):</b> w Subiekcie pole terminu (<code>dok_TerminRealizacji</code>) = zawsze data wystawienia — różnica 0 dni w 9 657/9 657 ZK 6/7. <b>Terminy realizacji NIE żyją w bazie.</b> Kalendarz jest jedynym rejestrem — A4 musi <b>pisać</b> do kalendarza (event z umowy przy akceptacji), nie czytać z bazy.</div>
+</details>
 <details class="node-dd" id="wezel-09">
     <summary class="nnode-h">
       <span class="nnode-nr">09</span>
