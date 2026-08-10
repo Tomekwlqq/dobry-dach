@@ -624,7 +624,9 @@
       <div class="auto-note"><b>[automat A0]</b> to jest bramka: „nie ma problemu" = A0 wypada z zakresu, nie budujemy rejestru. A0 = budowa bazy klientów: każde zapytanie dopisane do bazy to potencjalny przyszły klient — rejestr to inwestycja w bazę, nie koszt.</div>
 
     </div>
-  </details>
+  
+<div class="auto-note"><b>✅ FAKT (notatki Jura, 2026-08-10):</b> oferty i wyceny klienta indywidualnego idą <b>na KOMANDYTOWEJ</b> — każda wycena ma numer ZK (zlecenie klienta). Klient przychodzi z projektem, a PH pyta o wiele rzeczy, bo <b>nie ma scenariusza „co dalej"</b> — kandydat na automat (lista pytań dla PH).</div>
+</details>
 <details class="node-dd" id="wezel-01">
     <summary class="nnode-h">
       <span class="nnode-nr">01</span>
@@ -916,7 +918,9 @@
       <textarea class="inline-ta" data-save placeholder="np. nikt nie wie, co jest w realizacji; statusy nie są aktualizowane…"></textarea>
       Szacunkowo <input class="pct" type="number" min="0" max="100" placeholder="%"> <span class="pct-suffix">% ZK ze statusem zgodnym z rzeczywistością</span></p>
     </div>
-  </details>
+  
+<div class="auto-note"><b>✅ FAKT (notatki Jura, 2026-08-10):</b> status „z rezerwacją" (7) zmienia <b>LOGISTYK — jest ich dwóch</b> — na podstawie maila od PH. Tak musi być: PH się mylili/ściemniali, logistycy są pewniejsi. <b>Automat nie zmienia statusu sam</b> — pilnuje maila PH→logistyk (przypomnienie).</div>
+</details>
 <details class="node-dd" id="wezel-08">
     <summary class="nnode-h">
       <span class="nnode-nr">08</span>
@@ -978,7 +982,9 @@
       Szacunkowo <input class="pct" type="number" min="0" max="100" placeholder="%"> <span class="pct-suffix">% zamówień opóźnionych względem harmonogramu</span></p>
       <div class="auto-note"><b>[automat A4]</b> akceptacja (05) → zamówienie z pozycji ZK + rezerwacja. Bez rezerwacji i bez cyfrowego zamówienia A4 zostaje przy „przypomnij, że trzeba zamówić".</div>
     </div>
-  </details>
+  
+<div class="auto-note"><b>✅ FAKT (notatki Jura, 2026-08-10):</b> zamówienie towaru: PH wysyła maila do <b>logistyka (2 osoby)</b> → logistyk zamawia towar i zmienia status na „z rezerwacją". <b>PAIN:</b> podwójne wprowadzanie (komandytowa + jawna), import/eksport między bazami <b>bez walidacji</b> — wiele błędów; brak eksportu = przepisywanie z łapy.</div>
+</details>
 <details class="node-dd" id="wezel-10">
     <summary class="nnode-h">
       <span class="nnode-nr">10</span>
@@ -1010,7 +1016,9 @@
       <textarea class="inline-ta" data-save placeholder="np. WZ ręczne, błędy w pozycjach, niezgodność z ZK na końcu…"></textarea>
       Szacunkowo <input class="pct" type="number" min="0" max="100" placeholder="%"> <span class="pct-suffix">% WZ z pomyłką wykrytą po wydaniu</span></p>
     </div>
-  </details>
+  
+<div class="auto-note"><b>✅ FAKT (2026-08-10):</b> plan transportów żyje w <b>kalendarzach Google per pojazd</b> (VW CRAFTER, HDS DAF, HDS MAN, PEUGEOT, RENAULT, PAWEŁEK) — event = pojazd + numer ZK (np. „MR-ZK 95/MAG/07/2026"). Do pilnowania: czy każdy ZK ma transport, konflikty pojazdów, ilości. Raport „w realizacji": ile ma wyjechać vs ile wyjechało (wartość) = % realizacji.</div>
+</details>
 <details class="node-dd" id="wezel-11">
     <summary class="nnode-h">
       <span class="nnode-nr">11</span>
@@ -1036,7 +1044,9 @@
       Szacunkowo <input class="pct" type="number" min="0" max="100" placeholder="%"> <span class="pct-suffix">% WZ, o których PH nie wie w dniu wydania</span></p>
       <div class="auto-note"><b>[automat A5]</b> mock gotowy: „Dla ZK #1234 (Kowalski, 400m²) wyszło WZ #56: materiały X, wartość Y. Postęp: 34%." — do decyzji: kanał, godzina, kopie.</div>
     </div>
-  </details>
+  
+<div class="auto-note"><b>✅ FAKT (2026-08-10):</b> numer ZK w eventach kalendarzy transportowych w formacie <b>„*/MAG/*"</b> — automat może je wyciągać i porównywać z bazą (czy ZK istnieje, status, czy transport pokrywa się z terminem).</div>
+</details>
 <details class="node-dd" id="wezel-12">
     <summary class="nnode-h">
       <span class="nnode-nr">12</span>
@@ -1064,7 +1074,9 @@
       <textarea class="inline-ta" data-save placeholder="np. klient płaci po terminie, nikt nie wie komu przypomnieć…"></textarea>
       Szacunkowo <input class="pct" type="number" min="0" max="100" placeholder="%"> <span class="pct-suffix">% faktur płaconych po terminie</span></p>
     </div>
-  </details>
+  
+<div class="auto-note"><b>✅ FAKT (notatki Jura, 2026-08-10):</b> w momencie wyjazdów z komandytowej FV do klienta wystawia <b>JAWNA</b> — dokument „Prace budowlane na budynku mieszkalnym", pozycja 1 + wartość. De facto przepływy — więcej kasy niż wydanego towaru. Komandytowa musi sprzedać jawnej, żeby jawna mogła zamontować (obieg dokumentów między spółkami).</div>
+</details>
 <details class="node-dd" id="wezel-13">
     <summary class="nnode-h">
       <span class="nnode-nr">13</span>
@@ -1089,7 +1101,9 @@
       Szacunkowo <input class="pct" type="number" min="0" max="100" placeholder="%"> <span class="pct-suffix">% dni, gdy PH nie zna aktualnego stanu zleceń</span></p>
       <div class="auto-note"><b>[automat A6]</b> prototyp działa (auto4_summary_ph.py, 11/11) — czeka na decyzję: kanał, godzina, odbiorcy, SMTP.</div>
     </div>
-  </details>
+  
+<div class="auto-note"><b>✅ FAKT (notatki Jura, 2026-08-10):</b> identyfikacja zamówienia <b>nie po osobie wystawiającej</b>, tylko po atrybucie dokumentu — <b>„2 inicjały PH"</b> (np. MR, SM, KB). W kopii bazy gt_Atrybut pusty — do potwierdzenia na produkcji; na razie raporty grupują po dok_PersonelId (zgodne z inicjałami w pd_Uzytkownik).</div>
+</details>
 <details class="node-dd" id="wezel-14">
     <summary class="nnode-h">
       <span class="nnode-nr">14</span>
@@ -1167,7 +1181,9 @@
       <textarea class="inline-ta" data-save placeholder="np. rozliczenie ciągnie się tygodniami po zakończeniu robót…"></textarea>
       Szacunkowo <input class="pct" type="number" min="0" max="100" placeholder="%"> <span class="pct-suffix">% rozliczeń końcowych po terminie z umowy</span></p>
     </div>
-  </details>
+  
+<div class="auto-note"><b>✅ FAKT (notatki Jura, 2026-08-10):</b> FV finalna do klienta wychodzi z <b>JAWNEJ</b> (usługa „Prace budowlane na budynku mieszkalnym" — towar + montaż, niższy VAT) — kasa od klienta wpływa do jawnej; komandytowa rozlicza się z jawnej za towar.</div>
+</details>
 <details class="node-dd" id="wezel-17">
     <summary class="nnode-h">
       <span class="nnode-nr">17</span>
