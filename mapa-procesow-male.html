@@ -1297,13 +1297,24 @@
     try { localStorage.setItem(KEY, JSON.stringify(data)); } catch(e){}
   }
   function updateCounter(){
-    var filled = els.filter(function(el){ return valOf(el) !== ""; }).length;
-    var saved = sts.filter(function(s){ return s.value === "saved"; }).length;
-    var draft = sts.filter(function(s){ return s.value === "draft"; }).length;
-    var skip = sts.filter(function(s){ return s.value === "skip"; }).length;
-    var pct = total ? Math.round(filled/total*100) : 0;
+    var filled = {};
+    document.querySelectorAll(".nmchip").forEach(function(c){
+      if(c.classList.contains("on")) filled[c.getAttribute("data-k")] = 1;
+    });
+    document.querySelectorAll(".irr").forEach(function(b){
+      if(b.classList.contains("on")) filled[b.getAttribute("data-irk")] = 1;
+    });
+    document.querySelectorAll(".pct").forEach(function(p){
+      if(p.classList.contains("on")) filled[p.getAttribute("data-k")] = 1;
+    });
+    document.querySelectorAll(".inline-ta").forEach(function(t){
+      if(t.value && t.value.trim()) filled[t.getAttribute("data-k")] = 1;
+    });
+    var total = document.querySelectorAll(".irr, .pct, .inline-ta").length;
+    var n = Object.keys(filled).length;
+    var pct = total ? Math.round(n/total*100) : 0;
     document.getElementById("barFill").style.width = pct + "%";
-    document.getElementById("cntTxt").textContent = pct + "% wypełnione · " + filled + "/" + total + " pól · ✓ " + saved + " · ✏️ " + draft + " · ⏭ " + skip;
+    document.getElementById("cntTxt").textContent = pct + "% wypełnione · " + n + "/" + total + " pytań";
   }
   var t;
   function schedule(){
