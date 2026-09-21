@@ -42,9 +42,9 @@
      2026-09-21.</p>
 
   <div class="tiles">
-    <div class="tile"><div class="l">Problemów na liście</div><div class="v">25</div></div>
-    <div class="tile"><div class="l">Czeka na Twoją decyzję</div><div class="v" style="color:var(--warn)">10</div></div>
-    <div class="tile"><div class="l">Do zrobienia u M</div><div class="v" style="color:var(--bad)">11</div></div>
+    <div class="tile"><div class="l">Problemów na liście</div><div class="v">30</div></div>
+    <div class="tile"><div class="l">Czeka na Twoją decyzję</div><div class="v" style="color:var(--warn)">11</div></div>
+    <div class="tile"><div class="l">Do zrobienia u M</div><div class="v" style="color:var(--bad)">15</div></div>
     <div class="tile"><div class="l">Już zamknięte regułą</div><div class="v" style="color:var(--cash)">4</div></div>
   </div>
 
@@ -253,6 +253,66 @@
         <td class="c">Nie wiemy, czy faktura zerowa to sposób wystawiania, czy defekt. Bez odpowiedzi te 666 par zostaje poza dziurami, a sprzedaż z rejestru może być zaniżona.</td>
         <td class="k">DECYZJA: sposób wystawiania czy defekt.</td>
       </tr>
+      <tr>
+        <td class="p"><span class="w">—</span> 🎯 Praca na arkuszach Google — pomysł z briefu, u nas nie ma nic</td>
+        <td class="d">brief 9.09 pkt 6 + materiał kontrolny: 12 arkuszy z plików Tomka, z których część liczy się ręcznie</td>
+        <td class="e">INFORMACJE · warstwa wymiany danych</td>
+        <td class="c">Arkusz = widok roboczy, nigdy źródło. Źródłem zostaje baza; nic nie liczymy z ręcznych plików, bo to one wprowadzają rozjazdy.</td>
+        <td class="k">DECYZJA: wchodzimy w Google Sheets czy zostajemy przy raportach HTML z bazy.</td>
+      </tr>
+      <tr>
+        <td class="p"><span class="w">—</span> 🎯 Brak systemu łączącego bazy: jawna (przychody) — komandytowa (koszty)</td>
+        <td class="d">brief 9.09 pkt 7; nasze pomiary: 551 z 851 klientów wydań (64,7%) nie istnieje w jawej — nie ma jak zestawić kosztu z przychodem</td>
+        <td class="e">INFORMACJE · wspólny system na obie bazy</td>
+        <td class="c">Jeden odczyt z obu baz: przychód jawnej zestawiony z kosztem komandytowej, po kliencie i po dokumencie. Kaskada dopasowania (NIP → nazwa → adres → kontakt → pozycje → powiązania) jest już gotowa.</td>
+        <td class="k">M: dostęp do obu baz — uruchomić przecięcie i dać listę rozbieżności.</td>
+      </tr>
+      <tr>
+        <td class="p"><span class="w">—</span> 📖 Brak statystyki dokumentów (WZ) z pokryciem i rodzajem pokrycia</td>
+        <td class="d">brief 9.09 pkt 7a; nasz przebieg E1 daje to już na kopii: 58,2% faktura zewnętrzna · 35,1% w drodze · 5,9% dziury</td>
+        <td class="e">INFORMACJE + AUTOMATYZACJA</td>
+        <td class="c">Tabela pokrycia per wydanie: czym pokryte (faktura / zamówienie / zaliczka / inwentaryzacja / nic) i na jaką kwotę. Dziś istnieje tylko w formie naszego jednorazowego przebiegu.</td>
+        <td class="k">M: powtórzyć na żywej bazie — wtedy to jest statystyka, a nie pomiar.</td>
+      </tr>
+      <tr>
+        <td class="p"><span class="w">—</span> 📖 Brak systemu powiadomień „dzieje się coś dziwnego”</td>
+        <td class="d">brief 9.09 pkt 8; mamy surowiec: 456 wydań po ostatniej fakturze, 1 171 dziur, 247 wydań zerowych z kosztem</td>
+        <td class="e">AUTOMATYZACJA</td>
+        <td class="c">Alert tylko na odchylenie od wzorca — dokument zmieniony po wydaniu, wydanie zerowe z kosztem, faktura bez umowy. Nie zalewamy alertami wszystkiego, bo wtedy nikt ich nie czyta.</td>
+        <td class="k">M: wdrożenie; ARGUS: reguły i progi.</td>
+      </tr>
+      <tr>
+        <td class="p"><span class="w">—</span> 📖 Brak raportu kasowego z bazy</td>
+        <td class="d">brief 9.09 pkt 8a; nasze pomiary: 2 942 rozrachunki / 31 040 478 zł, otwarte salda 816 588 zł, po terminie 657 246 zł — a plik kasowy prowadzony ręcznie</td>
+        <td class="e">AUTOMATYZACJA · raport + INFORMACJE · kasa z bazy</td>
+        <td class="c">Dzienny raport kasy liczony z bazy, plik ręczny znika. Alert, gdy kasa nie spina się z bazą — dotąd to była Twoja ręczna robota.</td>
+        <td class="k">M: wdrożyć po potwierdzeniu kolumny prawdy (`nzf_Wartosc`).</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Pokrycie briefu (spotkanie 9.09) — żeby nie było wątpliwości, że nic nie wypadło</h2>
+  <table>
+    <colgroup><col style="width:26%"><col style="width:40%"><col style="width:34%"></colgroup>
+    <thead><tr><th>Punkt briefu</th><th>Co mówi</th><th>Gdzie to jest w liście</th></tr></thead>
+    <tbody>
+      <tr><td>1–2 · horyzont i cel</td><td>Robimy to pod przyszły rok, na nową bazę i nową wersję Subiekta. Cel: spójny system zarządzania, alertowania i blokowania błędów.</td><td>Cała lista — każda pozycja ma przypisany poziom, a poziomy 1 i 2 to nowa baza od 1.01.</td></tr>
+      <tr><td>3 · co najważniejsze teraz</td><td>Identyfikowanie błędów i budowa mikro-automatyzacji (treningowych).</td><td>Punkty „brief 9.09 pkt 6/7/8/8a" — dołożone do listy po porównaniu z briefem.</td></tr>
+      <tr><td>4a · nachodzące inwestycje</td><td>Klient indywidualny z 3 inwestycjami, trudno rozseparować.</td><td>Węzeł <b>08</b> — pozycja „Klient z 3 budowami nachodzącymi na siebie".</td></tr>
+      <tr><td>4b · brak definicji inwestycji</td><td>Różne sposoby ustawiania, brak rejestru w Subiekcie.</td><td>Węzeł <b>03</b> — „Brak rejestru budów klientów (16 016 720 zł)".</td></tr>
+      <tr><td>4c · te same firmy w obu bazach</td><td>Ten sam klient w jawnej i komandytowej — konieczny mechanizm synchronizacji.</td><td>Węzeł <b>16</b> — „551 z 851 klientów wydań nie istnieje w jawej".</td></tr>
+      <tr><td>4d · wsteczne edycje</td><td>Zmiana faktur, a najgorsze — zmiana kontrahenta.</td><td>Węzeł <b>14</b> — „baza ich nie zapisuje" + „dopisanie pozycji po wydaniu".</td></tr>
+      <tr><td>4e · ręczne pliki</td><td>Ręcznie prowadzone pliki, w tym plik kasowy.</td><td>Węzeł <b>12</b> + punkt „brief 9.09 pkt 8a" (raport kasowy z bazy).</td></tr>
+      <tr><td>4f · brak umów przy FV z jawnej</td><td>Brak umowy za każdym razem, gdy faktura wychodzi ze spółki jawnej.</td><td>Węzeł <b>03</b> — „Brak umów przy fakturach z jawnej".</td></tr>
+      <tr><td>4g · rzeczy z pliku Tomka</td><td>Lista błędów z jego pliku jako rzeczy do poszukiwania.</td><td>Materiał kontrolny: 12 arkuszy w <span class="mono">PROJEKT/KONTROLA_Z_PLIKOW_TOMKA/</span> — używamy jako weryfikacji, nie jako źródła.</td></tr>
+      <tr><td>4h · lista z naszych analiz</td><td>Wszystko, co wynika z analiz — potrzebna lista.</td><td><b>Ta lista</b> — 30 pozycji z dowodami.</td></tr>
+      <tr><td>5i · wymuszenia procesowe</td><td>ZK generuje umowę; trzeba zaznaczyć, które ZK idzie dalej.</td><td>Poziom <b>1 · PREWENCJA</b> — węzły 03, 06, 08, 10 (palety), 14, 16.</td></tr>
+      <tr><td>5ii · bieżąca kontrola stanu i rozjazdów</td><td>Wspólny system informacyjny łączący bazy, koszty z przychodami, narastające statusy, <b>punkt zero</b>.</td><td>Poziom <b>2 · INFORMACJE</b> — węzły 02, 10, 12, 14, 16 + punkt „brief 9.09 pkt 7".</td></tr>
+      <tr><td>5iii · automatyzacje</td><td>Wymuszanie akcji po stanie (zaległości → dzwon), regularne informowanie, alerty o niestandardowych zdarzeniach.</td><td>Poziom <b>3 · AUTOMATYZACJA</b> — węzły 00, 02, 10, 12, 13 + punkty „brief pkt 8 i 8a".</td></tr>
+      <tr><td>5iv · workflowy z konsoli</td><td>„Sprawdź WZ" i algorytm sam tropi wydanie i jego powiązania.</td><td>Poziom <b>4 · WORKFLOW URUCHAMIANY DO EVENTU</b> — węzły 10, 12, 15. Algorytm już przeszedł 19 477 wydań.</td></tr>
+      <tr><td>6 · Google Sheets</td><td>Praca na arkuszach — pomysł.</td><td>Punkt „brief 9.09 pkt 6" — z jawnym „arkusz to widok, nie źródło".</td></tr>
+      <tr><td>7 / 7a · system łączący bazy</td><td>Jawna (przychody) — komandytowa (koszty); statystyka WZ z pokryciem i jakim.</td><td>Punkty „brief 9.09 pkt 7" i „pkt 7a".</td></tr>
+      <tr><td>8 / 8a · powiadomienia i kasa</td><td>System powiadomień, że dzieje się coś dziwnego; raport kasowy.</td><td>Punkty „brief 9.09 pkt 8" i „pkt 8a".</td></tr>
     </tbody>
   </table>
 
@@ -268,7 +328,7 @@
   <div class="box">
     <h3 style="margin-top:0">Trzy rzeczy, które ta lista mówi wprost</h3>
     <ul>
-      <li><b>Decyzje blokują więcej niż robota.</b> 10 z 25 pozycji czeka na Twoją decyzję — nie na kod i nie na bazę.</li>
+      <li><b>Decyzje blokują więcej niż robota.</b> 11 z 30 pozycji czeka na Twoją decyzję — nie na kod i nie na bazę.</li>
       <li><b>Najdroższe problemy nie są najtrudniejsze.</b> Wsteczne edycje dokumentów i nachodzące budowy klientów to poziom <b>1 · PREWENCJA</b> (nowa baza, wymuszenia) — a nie kolejny raport.</li>
       <li><b>Trzy liczby tego samego zjawiska</b> (dziury: 557 / 1 171 / 1 359) są na liście jako problem sam w sobie, bo dopóki się nie zejdą, żadna liczba o dziurach nie jest wiążąca.</li>
     </ul>
