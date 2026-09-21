@@ -48,12 +48,23 @@
     <div class="tile"><div class="l">Już zamknięte regułą</div><div class="v" style="color:var(--cash)">4</div></div>
   </div>
 
+  <h2>Cztery poziomy radzenia sobie z problemem</h2>
+  <div class="box">
+    <p style="margin-top:0">Nazwy Twoje, obowiązujące. Kolumna 3 każdego wiersza mówi, na którym poziomie ten problem jest traktowany.</p>
+    <ul>
+      <li><b>1 · PREWENCJA</b> — mechanizm, proces, procedura. Czego system nie pozwoli zrobić w ogóle (wymuszenie: ZK → umowa, wybór budowy z rejestru, słownik kategorii, log zmian, jedna kartoteka na NIP).</li>
+      <li><b>2 · INFORMACJE</b> — traktowanie eventów: każde zdarzenie zostaje zapisane i widoczne (rejestr zapytań, punkt zero, stan + godzina odczytu, kasa z bazy).</li>
+      <li><b>3 · AUTOMATYZACJA</b> — system działa sam: przypomnienia, alerty, raporty, poprawki w kodzie raportu.</li>
+      <li><b>4 · WORKFLOW URUCHAMIANY DO EVENTU</b> — uruchamiany zdarzeniem: np. „sprawdź WZ” i algorytm sam tropi wydanie przez jego powiązania.</li>
+    </ul>
+  </div>
+
   <h2>Jak czytać</h2>
   <div class="box">
     <ul>
       <li><b>Kolumna 1 — PROBLEM:</b> co jest nie tak. Numer obok to węzeł procesu (00–17) z mapy procesów.</li>
       <li><b>Kolumna 2 — DOWÓD:</b> skąd wiemy. Liczba i źródło. Jeśli pomiaru nie ma, jest to napisane wprost — nie udajemy dowodu.</li>
-      <li><b>Kolumna 3 — ELEMENT SYSTEMU:</b> który poziom to traktuje (I prewencja · II kontrola stanu · III automatyzacje · IV workflow z konsoli).</li>
+      <li><b>Kolumna 3 — ELEMENT SYSTEMU:</b> który z czterech poziomów to traktuje (nazwy jak wyżej).</li>
       <li><b>Kolumna 4 — CO MA ROBIĆ:</b> rozwiązanie — konkretne zachowanie systemu albo reguła.</li>
       <li><b>Kolumna 5 — KTO / CZEGO POTRZEBA:</b> kto to robi i co musi się stać, żeby ruszyło (decyzja, zadanie dla M, pytanie do klienta).</li>
     </ul>
@@ -70,175 +81,175 @@
       <tr>
         <td class="p"><span class="w">00</span> 📖 Kontakt wyłącznie mailowy — 0 telefonów na 7 595 kartotek</td>
         <td class="d">kopia 07.08: pole telefonu nieuzupełnione w żadnej kartotece</td>
-        <td class="e">III · raport A6 + wymóg w nowej bazie</td>
+        <td class="e">AUTOMATYZACJA · raport A6 + PREWENCJA · wymóg w nowej bazie</td>
         <td class="c">A6 przypomina mailem (bo telefonu nie ma). Nowa baza wymaga telefonu przy kartotece — bez tego „dzwoń do zalegających” nie wstanie.</td>
         <td class="k">M: sprawdzić na żywej bazie. DECYZJA: czy egzekwujemy telefon w nowej bazie.</td>
       </tr>
       <tr>
         <td class="p"><span class="w">00</span> 📖 Kontakt się urywa — nikt nie oddzwania, klient dzwoni drugi raz</td>
         <td class="d">opowieść z wizyty — skala nieznana (brak pomiaru)</td>
-        <td class="e">III · A0 rejestr zapytań</td>
+        <td class="e">INFORMACJE · rejestr zapytań (każde zapytanie = event)</td>
         <td class="c">Każde zapytanie wchodzi do bazy z datą i właścicielem; brak reakcji w X godzin = automatyczne przypomnienie do PH.</td>
         <td class="k">Nie ma pomiaru → najpierw ustalić skalę (pytanie do klienta).</td>
       </tr>
       <tr>
         <td class="p"><span class="w">01</span> 📖 Projekt przychodzi w papierze — brak cyfrowej formy blokuje automat</td>
         <td class="d">odpowiedź klienta (wizyta 25.08): forma „papier”, ląduje w segregatorze</td>
-        <td class="e">III · A1 skan + odczyt</td>
+        <td class="e">AUTOMATYZACJA · skan + odczyt projektu</td>
         <td class="c">Skan przy przyjęciu (jedno miejsce), automat czyta wymiary, powierzchnię i krycie; papier zostaje jako kopia, nie jako źródło.</td>
         <td class="k">Wdrożenie po stronie klienta (skaner) — pozycja planu I.</td>
       </tr>
       <tr>
         <td class="p"><span class="w">02</span> 🎯 Koszt 68 586 749 zł > wartość netto 67 622 038 zł — nadwyżka 965 tys. zł</td>
         <td class="d">rejestr komandytowej — pozycja otwarta u M</td>
-        <td class="e">II · kontrola stanu + punkt zero</td>
+        <td class="e">INFORMACJE · kontrola stanu + punkt zero</td>
         <td class="c">Wyjaśnić nadwyżkę (obieg wewnętrzny? faktury zakupu? korekty?), zanim jakakolwiek marża wejdzie do raportu. Punkt zero 1.01 zamraża stan.</td>
         <td class="k">M: rozbić nadwyżkę wg typu dokumentu. Do tego czasu marża NIE wychodzi.</td>
       </tr>
       <tr>
         <td class="p"><span class="w">02</span> 📖 Obieg wewnętrzny liczony jak sprzedaż — 6 003 wydania / 23 233 738 zł</td>
         <td class="d">przebieg E1 na 19 477 wydaniach (suma domyka się co do 0,00 zł)</td>
-        <td class="e">III · reguła w raporcie</td>
+        <td class="e">AUTOMATYZACJA · reguła w raporcie</td>
         <td class="c">Wydanie na własną spółkę = stan „w drodze”: zero przychodu i zysku teraz. Osobna pozycja w raporcie — nie wolno sumować z HURTOWĄ.</td>
         <td class="k">Zrobione (reguła). M: potwierdzić listę własnych spółek na żywej bazie.</td>
       </tr>
       <tr>
         <td class="p"><span class="w">02</span> 📖 Defekt raportu A6: `dok_Typ IN (2,1)` doliczał faktury zakupu do kolumny „FS”</td>
         <td class="d">kopia 07.08: 04.08 FZ 122 155,16 zł obok FS 109 161,36 zł; po korekcie 5 dok. / 18 008,31 zł</td>
-        <td class="e">III · kod raportu</td>
+        <td class="e">AUTOMATYZACJA · kod raportu</td>
         <td class="c">Poprawka `= 2` weszła do kanonu. U M do powtórzenia na żywej bazie i przeliczenia dni, w których raport już poszedł.</td>
         <td class="k">M: przeliczyć wstecz. ARGUS: sprawdzić, czy nie ma innych miejsc z tym samym błędem.</td>
       </tr>
       <tr>
         <td class="p"><span class="w">03</span> 🎯 Brak rejestru budów klientów — 3 152 wydania / 16 016 720 zł</td>
         <td class="d">mapa klienta: etykieta tylko w arkuszu, żadnego pola/rejestru w bazie</td>
-        <td class="e">I · wymuszenie przy ZK + rejestr budów</td>
+        <td class="e">PREWENCJA · wymuszenie przy ZK + rejestr budów</td>
         <td class="c">ZK nie idzie dalej bez wyboru budowy z rejestru. Wtedy nachodzące budowy (4a) stają się policzalne — dziś nie są.</td>
         <td class="k">M: sprawdzić, czy Subiekt ma jakiekolwiek pole, którym da się to oznaczyć. DECYZJA: rejestr w bazie czy poza.</td>
       </tr>
       <tr>
         <td class="p"><span class="w">03</span> 🎯 Brak umów przy fakturach wychodzących ze spółki jawnej</td>
         <td class="d">niezweryfikowane — nie mamy listy faktur z jawnej</td>
-        <td class="e">I · wymuszenie + III · alert</td>
+        <td class="e">PREWENCJA · wymuszenie + AUTOMATYZACJA · alert</td>
         <td class="c">Faktura z jawnej bez powiązanej umowy = blokada/alert.</td>
         <td class="k">M: dać listę FS z jawnej (zadanie 0068 pkt 2).</td>
       </tr>
       <tr>
         <td class="p"><span class="w">06</span> 🎯 Umowa nie jest wymuszona procesowo — dziś „osobny dokument”</td>
         <td class="d">założenie klienta: „zrobienie ZK od razu generuje umowę” — u nas nic nie ma</td>
-        <td class="e">I · wymuszenie procesowe</td>
+        <td class="e">PREWENCJA · wymuszenie procesowe</td>
         <td class="c">ZK generuje umowę automatem z danymi z ZK. Najmocniejszy przykład poziomu I — wchodzi do nowej bazy od 1.01.</td>
         <td class="k">DECYZJA: czy to priorytet na 1.01.</td>
       </tr>
       <tr>
         <td class="p"><span class="w">08</span> 🎯 Klient indywidualny z 3 budowami nachodzącymi na siebie — niemierzalne</td>
         <td class="d">brak pomiaru; bez rejestru budów nie da się policzyć</td>
-        <td class="e">I · rejestr budów + II · kalendarz</td>
+        <td class="e">PREWENCJA · rejestr budów + INFORMACJE · kalendarz</td>
         <td class="c">Rejestr budów + kalendarze → jedno zapytanie z listą klientów, u których budowy się nakładają.</td>
         <td class="k">Największy ból klienta, a stoi wyłącznie na poziomie I. DECYZJA: wchodzi na 1.01.</td>
       </tr>
       <tr>
         <td class="p"><span class="w">10</span> 🎯 Wydania bez dokumentu: 1 171 / 3 892 693 zł</td>
         <td class="d">trzy pomiary tego samego zjawiska: mapa 15.09 → 557/1,21 mln; automat 17.09 → 1 359; E1 21.09 → 1 171/3,89 mln</td>
-        <td class="e">II · punkt zero + IV · algorytm</td>
+        <td class="e">INFORMACJE · punkt zero + WORKFLOW OD EVENTU · algorytm tropienia</td>
         <td class="c">Bez rozstrzygnięcia rozjazdu żadna liczba o dziurach nie jest wiążąca. Punkt zero 1.01 zamyka problem u źródła: jedna definicja, jedna data odczytu.</td>
         <td class="k">M: powtórzyć E1 na żywej bazie + rozstrzygnąć metodę. To blokuje każdą liczbę o dziurach.</td>
       </tr>
       <tr>
         <td class="p"><span class="w">10</span> 📖 456 wydań nowszych niż ostatnia faktura dla tego samego klienta</td>
         <td class="d">alert policzalny — 4 reguły + SQL</td>
-        <td class="e">III · alert (gotowy do wdrożenia)</td>
+        <td class="e">AUTOMATYZACJA · alert (gotowy do wdrożenia)</td>
         <td class="c">Alert „faktura do wystąpienia” — najszybciej zamienialny w pieniądze: to nie spór, a brak dokumentu.</td>
         <td class="k">M: wdrożyć na żywej bazie. DECYZJA: czy „faktura klienta” = komandytowa, jawna, czy obie.</td>
       </tr>
       <tr>
         <td class="p"><span class="w">10</span> 🎯 Wydania o wartości 0 zł z kosztem > 0: 247 (3 247 798,27 + 313 108,38 zł)</td>
         <td class="d">kopia 07.08: żadne z 153 wydań w oknie kopii nie ma dokumentu po drugiej stronie</td>
-        <td class="e">II · weryfikacja + decyzja</td>
+        <td class="e">INFORMACJE · weryfikacja + decyzja</td>
         <td class="c">Nie nazywamy tego „obiegiem” bez dokumentu po drugiej stronie. Osobno 666 par „WZ 0 + FS 0” (koszt 9 725 535,56 zł) — czeka na odpowiedź, czy to praktyka firmy.</td>
         <td class="k">DECYZJA klienta/Tomka: czy faktura zerowa to sposób wystawiania, czy defekt.</td>
       </tr>
       <tr>
         <td class="p"><span class="w">10</span> 📖 Faktury zbiorcze: 47% obejmuje 4–10 wydań, 15,2% ponad 10, 17,6% jedno</td>
         <td class="d">rejestr komandytowej: rozkład liczby wydań na fakturę</td>
-        <td class="e">IV · reguła w algorytmie</td>
+        <td class="e">WORKFLOW OD EVENTU · reguła w algorytmie</td>
         <td class="c">Przypisujemy towarem i ilością, nigdy kwotą — bez tej reguły 63% powiązań byłoby fałszywych.</td>
         <td class="k">Zrobione w algorytmie (E1).</td>
       </tr>
       <tr>
         <td class="p"><span class="w">10</span> 🎯 43 pozycje z flagą PALETY (6 090,00 zł) bez wzorca P1–P12</td>
         <td class="d">lista 557 Tomka (kolumna „Flaga własna”) vs procedury firmowe</td>
-        <td class="e">I · procedura palet</td>
+        <td class="e">PREWENCJA · procedura palet</td>
         <td class="c">Palety w tej firmie idą na fakturę — wydanie palet bez dokumentu = dziura. Do potwierdzenia, żeby nie blokowały bramy 0,5%.</td>
         <td class="k">DECYZJA: czy palety traktujemy jako dziurę.</td>
       </tr>
       <tr>
         <td class="p"><span class="w">12</span> 📖 Kasa nie domyka się z plikiem ręcznym: 2 942 rozrachunki / 31 040 478 zł; otwarte 816 588 zł; po terminie 657 246 zł</td>
         <td class="d">kopia 07.08: rozrachunki i salda z bazy; plik ręczny = materiał kontrolny</td>
-        <td class="e">II · kasa z bazy + III · alert zaległości</td>
+        <td class="e">INFORMACJE · kasa z bazy + AUTOMATYZACJA · alert zaległości</td>
         <td class="c">Kasa czytana z bazy, plik ręczny znika. Zaległości z rozrachunków, nie z arkusza — to źródło rozbieżności.</td>
         <td class="k">M: potwierdzić kolumnę prawdy (`nzf_Wartosc` vs `nzf_WartoscPierwotna`).</td>
       </tr>
       <tr>
         <td class="p"><span class="w">12</span> 📖 ZK ze statusem 16/24/25 = 1 423, w tym 1 417 z FS zaliczkową</td>
         <td class="d">kopia 07.08: zaliczka klienta = FS podtyp 4/5 (798 komandytowa + 691 jawna)</td>
-        <td class="e">IV · definicja w trackerze</td>
+        <td class="e">WORKFLOW OD EVENTU · definicja w trackerze</td>
         <td class="c">ZK z zaliczką nie jest błędem — jest krokiem. Definicja wchodzi do trackera, żeby nie liczyć ich jako dziury.</td>
         <td class="k">Zrobione w definicji.</td>
       </tr>
       <tr>
         <td class="p"><span class="w">13</span> 📖 Wiersz HURTOWA w raporcie: 1 146 dok. / 24 010 721,83 zł i „marża” 20,71% oznaczona ✅</td>
         <td class="d">audyt raportów: kanon §10 zabrania liczenia marży na obiegu wewnętrznym</td>
-        <td class="e">III · poprawka raportu</td>
+        <td class="e">AUTOMATYZACJA · poprawka raportu</td>
         <td class="c">Przenieść na „w drodze / 0 zł / bez marży”, a 20,71% opisać jako arytmetykę pliku klienta — inaczej raport pokazuje wymyślony przychód i zysk.</td>
         <td class="k">M: poprawić raport na żywej bazie.</td>
       </tr>
       <tr>
         <td class="p"><span class="w">14</span> 🎯 Wsteczne edycje dokumentów — baza ich nie zapisuje (zmiana faktury, a najgorsze: zmiana kontrahenta)</td>
         <td class="d">kopia 07.08: ślad rewizyjny = 0 rekordów; znacznik korekty nabywcy = 2 dokumenty na ~74 tys.</td>
-        <td class="e">I · log zmian w nowej bazie + II · punkt zero + III · alert różnic</td>
+        <td class="e">PREWENCJA · log zmian w nowej bazie + INFORMACJE · punkt zero + AUTOMATYZACJA · alert różnic</td>
         <td class="c">Trzy stopnie: (1) nowa baza ze włączonym śladem rewizyjnym obejmującym kontrahenta, (2) punkt zero 1.01 — codzienne porównanie, (3) alert, gdy dokument zmienił się po wydaniu.</td>
         <td class="k">M: sprawdzić, czy w jego wersji baza ma log zmian. DECYZJA: włączamy w nowej bazie.</td>
       </tr>
       <tr>
         <td class="p"><span class="w">14</span> 📖 Dopisanie pozycji po wydaniu — WZ 1267/MAG/07/2026 (1 731,10 zł vs 2 097,22 zł), WZ 1603/MAG/07/2026 (0,00 zł vs 369 928,46 zł)</td>
         <td class="d">weryfikacja 20 przypadków + weryfikacja „realne dziury” na kopii</td>
-        <td class="e">II · tabela „stan + godzina odczytu”</td>
+        <td class="e">INFORMACJE · stan + godzina odczytu</td>
         <td class="c">Wynik bez daty i godziny odczytu jest nieporównywalny. Każdy pomiar dostaje znacznik czasu — wtedy rozjazdy są faktem, a nie sporem.</td>
         <td class="k">Wdrożenie: każdy raport z godziną odczytu.</td>
       </tr>
       <tr>
         <td class="p"><span class="w">15</span> 📖 ZK nie domykają się z WZ — „wycofany skutek magazynowy” wrzucony do jednego worka</td>
         <td class="d">wzorzec P6a = 188, P6b = 207 (dwa różne zjawiska); brak ruchu magazynowego</td>
-        <td class="e">IV · reguła w trackerze</td>
+        <td class="e">WORKFLOW OD EVENTU · reguła w trackerze</td>
         <td class="c">Rozdzielić P6a i P6b osobnymi regułami — inaczej 207 wydań wygląda jak dziura, choć ma wyjaśnienie w polu dokumentu.</td>
         <td class="k">Zrobione w regułach.</td>
       </tr>
       <tr>
         <td class="p"><span class="w">16</span> 🎯 Te same firmy w obu bazach: 551 z 851 klientów wydań (64,7%) nie istnieje w jawej — NIP trafia 1,5%, nazwa 21,3%</td>
         <td class="d">kopia 07.08 + jawna: przecięcie po NIP i po znormalizowanej nazwie</td>
-        <td class="e">II · mechanizm synchronizacji + I · kartoteka z NIP</td>
+        <td class="e">INFORMACJE · mechanizm synchronizacji + PREWENCJA · kartoteka z NIP</td>
         <td class="c">Kaskada 6 stopni + 8 reguł normalizacji jest gotowa. W nowej bazie dochodzi wymuszenie: jedna kartoteka na NIP.</td>
         <td class="k">M: uruchomić przecięcie na obu żywych bazach i dać listę rozbieżności.</td>
       </tr>
       <tr>
         <td class="p"><span class="w">16</span> 📖 Błędne kategorie handlowca: 497 z 659 pozycji nadal w bazie</td>
         <td class="d">słownik kategorii weryfikowany na bazie (kody handlowców PZ/WA)</td>
-        <td class="e">I · słownik kategorii w nowej bazie</td>
+        <td class="e">PREWENCJA · słownik kategorii w nowej bazie</td>
         <td class="c">W nowej bazie kategoria wybierana ze słownika — ręcznie wpisana wartość nie przechodzi.</td>
         <td class="k">DECYZJA: kto poprawia 497 starych pozycji i czy w starej bazie w ogóle poprawiamy.</td>
       </tr>
       <tr>
         <td class="p"><span class="w">17</span> ❓ 157 faktur FS …/VIA/… z lat 2023–2026 bez bazy</td>
         <td class="d">porównanie numeracji dokumentów w bazach</td>
-        <td class="e">I · pytanie do klienta</td>
+        <td class="e">PREWENCJA · ustalenie źródła dokumentów (VIA)</td>
         <td class="c">Ustalić, gdzie VIA trzyma dokumenty po 2022. Bez tego 157 dokumentów i część marż zostaje bez pokrycia.</td>
         <td class="k">Treść pytania gotowa w kanale — do wysłania przez Tomka.</td>
       </tr>
       <tr>
         <td class="p"><span class="w">17</span> 🎯 666 par „WZ 0 zł + FS 0 zł” na klientów zewnętrznych (koszt 9 725 535,56 zł)</td>
         <td class="d">kopia 07.08: 441 par bez faktury z wartością u tego klienta w ±14 dni</td>
-        <td class="e">decyzja → potem reguła</td>
+        <td class="e">decyzja → potem AUTOMATYZACJA · reguła</td>
         <td class="c">Nie wiemy, czy faktura zerowa to sposób wystawiania, czy defekt. Bez odpowiedzi te 666 par zostaje poza dziurami, a sprzedaż z rejestru może być zaniżona.</td>
         <td class="k">DECYZJA: sposób wystawiania czy defekt.</td>
       </tr>
@@ -258,7 +269,7 @@
     <h3 style="margin-top:0">Trzy rzeczy, które ta lista mówi wprost</h3>
     <ul>
       <li><b>Decyzje blokują więcej niż robota.</b> 10 z 25 pozycji czeka na Twoją decyzję — nie na kod i nie na bazę.</li>
-      <li><b>Najdroższe problemy nie są najtrudniejsze.</b> Wsteczne edycje dokumentów i nachodzące budowy klientów to poziom I (nowa baza, wymuszenia) — a nie kolejny raport.</li>
+      <li><b>Najdroższe problemy nie są najtrudniejsze.</b> Wsteczne edycje dokumentów i nachodzące budowy klientów to poziom <b>1 · PREWENCJA</b> (nowa baza, wymuszenia) — a nie kolejny raport.</li>
       <li><b>Trzy liczby tego samego zjawiska</b> (dziury: 557 / 1 171 / 1 359) są na liście jako problem sam w sobie, bo dopóki się nie zejdą, żadna liczba o dziurach nie jest wiążąca.</li>
     </ul>
   </div>
